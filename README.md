@@ -3,10 +3,9 @@ Roblox's OOP Instance
 
 ```lua
 local instance = loadstring(game:HttpGet'https://github.com/fayvrit/instance/raw/refs/heads/main/source.lua')()
-local Holder = game.Players.LocalPlayer.PlayerGui
 
 local ScreenGui = instance.new('ScreenGui', {
-	Parent = Holder
+	Parent = game.Players.LocalPlayer.PlayerGui
 })
 
 local Frame = ScreenGui:new('Frame', {
