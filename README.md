@@ -24,14 +24,15 @@ local ChangedProperty = Frame:changedproperty('Position', function()
 end)
 
 local Tween = Frame:tween{
-	time = 1,
-	delay = 0,
-	reverse = true,
-	autoplay = false,
-	repeatcount = -1,
-	callback = print,
-	style = Enum.EasingStyle.Quart,
-	direction = Enum.EasingDirection.InOut,
+	time = 1, -- default is 1
+	delay = 0, -- default is 0
+	reverse = true, -- default is false
+	autoplay = false, -- default is true
+	repeatcount = -1, -- default is 0
+	callback = print, -- only call on autoplay
+	style = Enum.EasingStyle.Quart, -- default is Enum.EasingStyle.Quad
+	direction = Enum.EasingDirection.InOut, -- default is Enum.EasingStyle.Out
+
 	goal = {
 		Position = UDim2.new(1, 0, 1, 0), 
 		AnchorPoint = Vector2.new(1, 1)
