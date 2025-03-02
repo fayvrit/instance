@@ -14,7 +14,7 @@ local Frame = ScreenGui:new('Frame', {
 	Size = UDim2.new(0, 50, 0, 50)
 })
 
-local ChangedProperty = Frame:connect('InputBegan', function(input)
+local Connection = Frame:connect('InputBegan', function(input)
 	print('Input', input)
 end)
 
