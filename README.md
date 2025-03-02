@@ -28,7 +28,7 @@ local Tween = Frame:tween{
 	reverse = true, -- default is false
 	autoplay = false, -- default is true
 	repeatcount = -1, -- default is 0
-	callback = print, -- only call on autoplay
+	callback = print, -- only calls on autoplay
 	style = Enum.EasingStyle.Quart, -- default is Enum.EasingStyle.Quad
 	direction = Enum.EasingDirection.InOut, -- default is Enum.EasingStyle.Out
 
