@@ -71,20 +71,21 @@ instance.tween = function(self, info)
 	info.time = info.time or 1
 	info.delay = info.delay or 0
 	info.reverse = info.reverse or false
-	info.autoplay = info.autoplay or false
 	info.repeatcount = info.repeatcount or 0
 	info.callback = info.callback or function() end
 	info.style = info.style or Enum.EasingStyle.Quad
 	info.direction = info.direction or Enum.EasingDirection.Out
+	info.autoplay = info.autoplay == nil and true or info.autoplay
 	info.goal = assert(info.goal, 'failed to create tween without goal!')
 
 	self.info = TweenInfo.new(info.time, info.style, info.direction, info.repeatcount, info.reverse, info.delay)
 
 	self.tween = tween:Create(self.obj, self.info, info.goal)
 	
-	self.tween:Play()
-	
-	task.delay(info.time + info.delay, info.callback)
+	if info.autoplay then
+		self.tween:Play()
+		task.delay(info.time + info.delay, info.callback)
+	end
 	
 	return self.tween
 end
