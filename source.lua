@@ -79,15 +79,18 @@ instance.tween = function(self, info)
 	info.goal = assert(info.goal, 'failed to create tween without goal!')
 
 	self.info = TweenInfo.new(info.time, info.style, info.direction, info.repeatcount, info.reverse, info.delay)
+	self.anim = tween:Create(self.obj, self.info, info.goal)
 
-	self.tween = tween:Create(self.obj, self.info, info.goal)
-	
-	if info.autoplay then
-		self.tween:Play()
+	self.play = function()
+		self.anim:Play()
 		task.delay(info.time + info.delay, info.callback)
 	end
 	
-	return self.tween
+	if info.autoplay then
+		self.play()
+	end
+	
+	return self.anim
 end
 
 return instance
