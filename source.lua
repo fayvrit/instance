@@ -47,8 +47,20 @@ instance.add = function(self)
 	
 	item.obj = self
 	item.connections = {}
-	
+	table.insert(instance.items, item)
+
 	return item
+end
+
+instance.remove = function(self)
+	if not self or not self.obj then return end
+
+	local index = table.find(instance.items, self)
+	
+	if not index then return end
+	
+	table.remove(instance.items, index)
+	self:disconnect()
 end
 
 instance.connect = function(self, event, callback)
@@ -63,6 +75,14 @@ instance.changedproperty = function(self, property, callback)
 	table.insert(self.connections, connection)
 
 	return connection
+end
+
+instance.disconnects = function(self)
+	for _, connection in self.connections do
+		connection:Disconnect()
+	end
+
+	self.connections = {}
 end
 
 instance.tween = function(self, info)
